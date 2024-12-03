@@ -33,7 +33,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: '/images/metal-texture.jpg');
+  background-image: ('/images/metal-texture.jpg');
   background-size: cover;
   opacity: 0.1;
   pointer-events: none;
@@ -47,7 +47,7 @@ body {
   color: var(--terminal-green);
   text-shadow: 0 0 5px var(--terminal-green);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Update 1 */
   height: 600px; /* Set a fixed height */
   display: flex;
   flex-direction: column;
@@ -57,16 +57,17 @@ body {
   flex-grow: 1;
   overflow-y: auto;
   padding-right: 10px; /* Add some padding for the scrollbar */
+  height: calc(100% - 40px); /* Update 2 */
 }
 
 .screen::before {
   content: '';
   position: absolute;
-  top: 1;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-image: ('/images/screen-overlay.png'); */
+  background-image: ('/images/screen-overlay.png');
   background-size: cover;
   opacity: 0.1;
   pointer-events: none;
@@ -86,21 +87,21 @@ body {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    transparent 70%,
-    rgba(0, 0, 0, .5) 51%
+    transparent 25%,
+    rgba(0, 0, 0, .1) 51%
   );
   background-size: 100% 4px;
-  animation: scanline 5s linear infinite;
+  animation: scanline 10s linear infinite; 
 }
 
 @keyframes scanline {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(20px); }
+  0% { transform: translateY(-100%); } /* Update 3 */
+  100% { transform: translateY(100%); } /* Update 3 */
 }
 
 /* Custom scrollbar styles */
 .screen-content::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 .screen-content::-webkit-scrollbar-track {
@@ -111,7 +112,7 @@ body {
 .screen-content::-webkit-scrollbar-thumb {
   background: var(--terminal-green);
   border-radius: 10px;
-  border: 3px solid var(--screen-bg);
+  border: 2px solid var(--screen-bg);
 }
 
 .screen-content::-webkit-scrollbar-thumb:hover {

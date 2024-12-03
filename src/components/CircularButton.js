@@ -12,7 +12,7 @@ export function CircularButton({ onClick, children, isActive }) {
         <div className={`w-full h-full rounded-md flex items-center justify-center ${
           isActive ? 'bg-green-500' : 'bg-red-600 hover:bg-red-700'
         }`}>
-          {children.charAt(0)}
+          {/* {children.charAt(0)} */}
         </div>
       </button>
       <span className="text-lg">{children}</span>
