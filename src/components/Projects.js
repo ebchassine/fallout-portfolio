@@ -1,44 +1,31 @@
 import React from 'react';
 
-export function Projects() {
-  const projects = [
-    {
-      title: "Project 1",
-      description: "Project description filler text",
-      tech: "Tech Stack Examples: React, node.js, etc..."
-    },
-    {
-        title: "Project 2",
-        description: "Project description filler text",
-        tech: "Tech Stack Examples: React, node.js, etc..."
-    },
-    {
-        title: "Project 3",
-        description: "Project description filler text",
-        tech: "Tech Stack Examples: React, node.js, etc..."
-    },
-    {
-        title: "Project 4",
-        description: "Project description filler text",
-        tech: "Tech Stack Examples: React, node.js, etc..."
-    },
-    {
-        title: "Project 5",
-        description: "Project description filler text",
-        tech: "Tech Stack Examples: React, node.js, etc..."
-    },
-    {
-        title: "Project 6",
-        description: "Project description filler text",
-        tech: "Tech Stack Examples: React, node.js, etc..."
-    },  
-  ];
+const projects = [
+  {
+    title: "Vault-Tec UI Library",
+    description: "A React component library inspired by Fallout's interface design",
+    tech: "React, JavaScript, Storybook",
+    image: "/images/project1.jpg"
+  },
+  {
+    title: "Pip-Boy 3000",
+    description: "Mobile-first task management application",
+    tech: "Next.js, TailwindCSS, Firebase",
+    image: "/images/pip-boy-3000.jpg"
+  },
+  // Add more projects as needed
+];
 
+export function Projects({ setActiveSectionAndImage }) {
   return (
     <div className="space-y-6">
       {projects.map((project, index) => (
-        <div key={index} className="border border-[var(--terminal-green)] p-4">
-          <h3 className="text-xl mb-2"> {project.title}</h3>
+        <div 
+          key={index} 
+          className="border border-[var(--terminal-green)] p-4 cursor-pointer hover:bg-[rgba(51,255,51,0.1)]"
+          onClick={() => setActiveSectionAndImage('projects', project.image)}
+        >
+          <h3 className="text-xl mb-2">> {project.title}</h3>
           <p className="opacity-80">{project.description}</p>
           <p className="mt-2 text-sm opacity-60">[{project.tech}]</p>
         </div>

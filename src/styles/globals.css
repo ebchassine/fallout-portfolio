@@ -42,7 +42,9 @@ body {
 .screen {
   background-color: var(--screen-bg);
   border: 3px solid #444;
-  box-shadow: inset 0 0 10px rgba(51, 255, 51, 0.2);
+  box-shadow: 
+    inset 0 0 20px rgba(51, 255, 51, 0.3),
+    0 0 10px rgba(51, 255, 51, 0.1);
   padding: 20px;
   color: var(--terminal-green);
   text-shadow: 0 0 5px var(--terminal-green);
@@ -87,11 +89,11 @@ body {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    transparent 25%,
+    transparent 50%,
     rgba(0, 0, 0, .1) 51%
   );
   background-size: 100% 4px;
-  animation: scanline 10s linear infinite; 
+  animation: scanline 15s linear infinite; 
 }
 
 @keyframes scanline {
@@ -119,3 +121,7 @@ body {
   background: #45ff45;
 }
 
+.typewriter-text {
+  border-right: 0.15em solid var(--terminal-green);
+  animation: blink-caret 0.75s step-end infinite;
+}

@@ -1,16 +1,15 @@
 import React from 'react';
-import { Screen } from './Screen';
 import { About } from './About';
 import { Projects } from './Projects';
 import { Extra } from './Extra';
 
-export function MainScreen({ activeSection }) {
+export function MainScreen({ activeSection, setActiveSectionAndImage }) {
   const renderContent = () => {
     switch (activeSection) {
       case 'about':
         return <About />;
       case 'projects':
-        return <Projects />;
+        return <Projects setActiveSectionAndImage={setActiveSectionAndImage} />;
       case 'extra':
         return <Extra />;
       default:
@@ -19,11 +18,13 @@ export function MainScreen({ activeSection }) {
   };
 
   return (
-    <Screen title={activeSection.toUpperCase()}>
-      <div className="content-area">
-        {renderContent()}
+    <div className="fallout-panel">
+      <div className="screen">
+        <div className="screen-content">
+          {renderContent()}
+        </div>
       </div>
-    </Screen>
+    </div>
   );
 }
 
