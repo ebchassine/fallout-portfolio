@@ -2,19 +2,25 @@ import React, { useState, useEffect } from 'react';
 
 export function TypewriterText({ children, speed = 50 }) {
   const [text, setText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    if (currentIndex < children.length) {
+    if (text.length < children.length) {
       const timeout = setTimeout(() => {
-        setText(prevText => prevText + children[currentIndex]);
-        setCurrentIndex(prevIndex => prevIndex + 1);
+        setText(children.slice(0, text.length + 1));
       }, speed);
 
       return () => clearTimeout(timeout);
+    } else {
+      setIsTyping(false);
     }
-  }, [children, currentIndex, speed]);
+  }, [text, children, speed]);
 
-  return <span className="typewriter-text">{text}</span>;
+  return (
+    <span className="typewriter-text">
+      {text}
+      {isTyping && <span className="caret">|</span>}
+    </span>
+  );
 }
 

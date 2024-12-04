@@ -3,6 +3,8 @@ import { MetalPanel } from './components/MetalPanel';
 import { MainScreen } from './components/MainScreen';
 import { FalloutButton } from './components/FalloutButton';
 import { ImageDisplay } from './components/ImageDisplay';
+import { Socials } from './components/Socials';
+import { DecorativePanel } from './components/FalloutButton';
 import './styles/fallout-ui.css';
 
 export default function App() {
@@ -53,6 +55,10 @@ export default function App() {
               EXTRA
             </FalloutButton>
             <ImageDisplay imageSrc={currentImage} alt="Project Image" />
+            <Socials />
+            {/* <div className={`decorative-panel ${pattern}`}></div> */}
+            <DecorativePanel pattern="dots" />
+            {/* <DecorativePanel pattern="vents" /> */}
           </div>
         </div>
       </div>

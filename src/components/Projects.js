@@ -2,13 +2,13 @@ import React from 'react';
 
 const projects = [
   {
-    title: "Whitted Ray Tracer",
+    title: "Vault-Tec UI Library",
     description: "A React component library inspired by Fallout's interface design",
     tech: "React, JavaScript, Storybook",
-    image: "/images/project1.jpg"
+    image: "/images/vault-tec-ui.jpg"
   },
   {
-    title: "Tiny Search Engine ",
+    title: "Pip-Boy 3000",
     description: "Mobile-first task management application",
     tech: "Next.js, TailwindCSS, Firebase",
     image: "/images/pip-boy-3000.jpg"
@@ -26,7 +26,7 @@ export function Projects({ setActiveSectionAndImage }) {
           onClick={() => setActiveSectionAndImage('projects', project.image)}
         >
           <h3 className="text-xl mb-2">> {project.title}</h3>
-          <p className="opacity-80">{project.description}</p>
+          <p>{project.description}</p>
           <p className="mt-2 text-sm opacity-60">[{project.tech}]</p>
         </div>
       ))}
