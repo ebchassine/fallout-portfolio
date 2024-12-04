@@ -106,14 +106,13 @@ body {
   animation: blink-caret 0.75s step-end infinite;
 }
 
-/* Hover Styling for compoments/textHover.ks*/
 .hover-word {
-  position: relative;
   cursor: pointer;
+  transition: background-color 0.3s none;
 }
 
 .hover-word:hover {
-  background-color: yellow; /* Highlight color */
-  color: inherit; /* Keep original color */
-  transition: background-color 0.3s ease;
+  background-color: inherit; /* Highlight color */
+  
+  color: white;
 }

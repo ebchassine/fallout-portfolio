@@ -1,32 +1,44 @@
 import React from 'react';
 import useSound from 'use-sound';
-import clickSound from '../audio/click.mp3'; // Ensure this file is in your project directory
+import clickSound from '../audio/click.mp3'; // Make sure this path is correct
 
 const TextHover = ({ children }) => {
   const [play] = useSound(clickSound);
-  
 
-  // Helper function to split text by words and wrap each in a span
-  const wrapWords = (text) => {
-    
-    return text.split(' ').map((word, index) => (
-      <span
-        key={index}
-        style={styles.word}
-        onMouseEnter={play}
-        className="hover-word"
-      >
-        {word}&nbsp;
-      </span>
-    ));
+  // Function to wrap each word in a span with hover functionality
+  const wrapWords = (node) => {
+    if (typeof node === 'string') {
+      return node.split(' ').map((word, index) => (
+        <span
+          key={index}
+          style={styles.word}
+          onMouseEnter={play}
+          className="hover-word"
+        >
+          {word}&nbsp;
+        </span>
+      ));
+    }
+    return node;
   };
 
-  return React.Children.map(children, (child) => {
-    if (child.type === 'p') {
-      return <p>{wrapWords(child.props.children)}</p>;
-    }
-    return child;
-  });
+  return (
+    <div>
+      {React.Children.map(children, (child) => {
+        if (typeof child === 'string') {
+          return wrapWords(child);
+        }
+
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            children: React.Children.map(child.props.children, wrapWords),
+          });
+        }
+
+        return child;
+      })}
+    </div>
+  );
 };
 
 const styles = {

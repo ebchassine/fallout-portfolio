@@ -5,16 +5,15 @@ export function About() {
   return (
     <div className="space-y-4">
       <TextHover>
-        <p1>hello</p1>
+        <p>This is a test paragraph. Hover over each word!</p>
+        <h1>Hover over the heading words too!</h1>
+        <p>Another paragraph to try out.</p>
+      
+        <p>> NAME:</p>
+        <p>> OCCUPATION:</p>
+        <p>> STATUS: </p>
+        <p>> LOCATION: </p>
       </TextHover>
-      <p>> NAME: John Doe</p>
-      <p>> OCCUPATION: Full Stack Developer</p>
-      <p>> STATUS: Seeking new opportunities</p>
-      <p>> LOCATION: Vault 42, Digital Wasteland</p>
-      <p className="mt-4">
-        > A passionate developer with experience in React, Node.js, and surviving the digital apocalypse.
-        Currently exploring the wasteland of web development and collecting rare NPM packages.
-      </p>
     </div>
   );
 }
