@@ -2,13 +2,13 @@ import React from 'react';
 
 const projects = [
   {
-    title: "Vault-Tec UI Library",
+    title: "Whitted Ray Tracer",
     description: "A React component library inspired by Fallout's interface design",
     tech: "React, JavaScript, Storybook",
     image: "/images/project1.jpg"
   },
   {
-    title: "Pip-Boy 3000",
+    title: "Tiny Search Engine ",
     description: "Mobile-first task management application",
     tech: "Next.js, TailwindCSS, Firebase",
     image: "/images/pip-boy-3000.jpg"

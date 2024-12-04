@@ -49,8 +49,8 @@ body {
   color: var(--terminal-green);
   text-shadow: 0 0 5px var(--terminal-green);
   position: relative;
-  overflow: visible; /* Update 1 */
-  height: 600px; /* Set a fixed height */
+  overflow: visible; 
+  height: 600px; 
   display: flex;
   flex-direction: column;
 }
@@ -58,7 +58,7 @@ body {
 .screen-content {
   flex-grow: 1;
   overflow-y: auto;
-  padding-right: 10px; /* Add some padding for the scrollbar */
+  padding-right: 10px; /*  padding for the scrollbar */
   height: calc(100% - 40px); /* Update 2 */
 }
 
@@ -69,32 +69,12 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: ('/images/screen-overlay.png');
-  background-size: cover;
+  /* background-image: ('/images/screen-overlay.png'); */
+  /* background-size: cover; */
   opacity: 0.1;
   pointer-events: none;
 }
 
-.scanline {
-  position: relative;
-  overflow: hidden;
-}
-
-.scanline::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(0, 0, 0, .1) 51%
-  );
-  background-size: 100% 4px;
-  animation: scanline 15s linear infinite; 
-}
 
 @keyframes scanline {
   0% { transform: translateY(-100%); } /* Update 3 */
