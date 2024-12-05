@@ -86,42 +86,6 @@ body {
   z-index: 2;
 }
 
-/* Glitch fade-in effect */
-.glitch-fade-in {
-  animation: glitchFadeIn 0.5s ease-out;
-}
-
-@keyframes glitchFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-10px);
-    text-shadow: 2px 0 var(--terminal-green), -2px 0 #ff00ff;
-  }
-  20% {
-    opacity: 0.5;
-    transform: translateX(10px);
-    text-shadow: -2px 0 var(--terminal-green), 2px 0 #00ffff;
-  }
-  40% {
-    opacity: 1;
-    transform: translateX(-5px);
-    text-shadow: 2px 0 #00ffff, -2px 0 var(--terminal-green);
-  }
-  60% {
-    transform: translateX(5px);
-    text-shadow: -2px 0 #ff00ff, 2px 0 var(--terminal-green);
-  }
-  80% {
-    transform: translateX(-2px);
-    text-shadow: 2px 0 var(--terminal-green), -2px 0 #00ffff;
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-    text-shadow: none;
-  }
-}
-
 /* Custom scrollbar styles */
 .screen-content::-webkit-scrollbar {
   width: 12px;
@@ -313,5 +277,25 @@ body {
 /* Decorative panels */
 .decorative-panel {
   height: 60px;
+}
+
+.scanline-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(51, 255, 51, 0.1) 50%,
+    rgba(51, 255, 51, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  animation: scan 0.5s linear infinite;
+}
+
+.green-tint-overlay {
+  background-color: rgba(51, 255, 51, 0.1);
+  mix-blend-mode: multiply;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
 }
 

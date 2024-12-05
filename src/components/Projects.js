@@ -5,7 +5,7 @@ const projects = [
     title: "Vault-Tec UI Library",
     description: "A React component library inspired by Fallout's interface design",
     tech: "React, JavaScript, Storybook",
-    image: "/images/vault-tec-ui.jpg"
+    image: "/images/project1.jpg"
   },
   {
     title: "Pip-Boy 3000",

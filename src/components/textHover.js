@@ -1,6 +1,6 @@
 import React from 'react';
 import useSound from 'use-sound';
-import clickSound from '../audio/click.mp3'; // Make sure this path is correct
+import clickSound from '../audio/click.mp3'; 
 
 const TextHover = ({ children }) => {
   const [play] = useSound(clickSound);
