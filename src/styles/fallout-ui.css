@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  --terminal-green: #33ff33;
+  --metal-dark: #2a2a2a;
+  --metal-light: #4a4a4a;
+  --screen-bg: #001100;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  font-family: 'VT323', monospace;
+  color: var(--terminal-green);
+}
+
+.fallout-panel {
+  background: linear-gradient(145deg, var(--metal-light), var(--metal-dark));
+  border: 2px solid #555;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 0 10px rgba(0,0,0,0.5),
+    0 0 5px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.fallout-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: ('/images/metal-texture.jpg');
+  background-size: cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.screen {
+  background-color: var(--screen-bg);
+  border: 3px solid #444;
+  box-shadow: inset 0 0 10px rgba(51, 255, 51, 0.2);
+  padding: 20px;
+  color: var(--terminal-green);
+  text-shadow: 0 0 5px var(--terminal-green);
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      to bottom,
+      rgba(51, 255, 51, 0.1) 50%,
+      rgba(51, 255, 51, 0.05) 50%
+    );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scan 0.5s linear infinite;
+  z-index: 1;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+.screen-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  height: calc(100% - 40px);
+  position: relative;
+  z-index: 2;
+}
+
+/* Glitch fade-in effect */
+.glitch-fade-in {
+  animation: glitchFadeIn 0.5s ease-out;
+}
+
+@keyframes glitchFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+    text-shadow: 2px 0 var(--terminal-green), -2px 0 #ff00ff;
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateX(10px);
+    text-shadow: -2px 0 var(--terminal-green), 2px 0 #00ffff;
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-5px);
+    text-shadow: 2px 0 #00ffff, -2px 0 var(--terminal-green);
+  }
+  60% {
+    transform: translateX(5px);
+    text-shadow: -2px 0 #ff00ff, 2px 0 var(--terminal-green);
+  }
+  80% {
+    transform: translateX(-2px);
+    text-shadow: 2px 0 var(--terminal-green), -2px 0 #00ffff;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    text-shadow: none;
+  }
+}
+
+/* Custom scrollbar styles */
+.screen-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.screen-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.screen-content::-webkit-scrollbar-thumb {
+  background: var(--terminal-green);
+  border-radius: 10px;
+  border: 2px solid var(--screen-bg);
+}
+
+.screen-content::-webkit-scrollbar-thumb:hover {
+  background: #45ff45;
+}
+
+/* Screws */
+.screw {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(
+    circle at center,
+    #666 0%,
+    #444 40%,
+    #333 100%
+  );
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.top-left { top: 6px; left: 6px; }
+.top-right { top: 6px; right: 6px; }
+.bottom-left { bottom: 6px; left: 6px; }
+.bottom-right { bottom: 6px; right: 6px; }
+
+/* Button styling */
+.fallout-button-container {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  margin: 8px 0;
+  background: linear-gradient(145deg, var(--metal-light), var(--metal-dark));
+  border: 2px solid #555;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 0 10px rgba(0,0,0,0.5),
+    0 0 5px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.fallout-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #b39c4d;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.button-text {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Indicator light */
+.indicator-light {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle at center,
+    #ff4444 0%,
+    #cc0000 60%,
+    #990000 100%
+  );
+  border-radius: 50%;
+  margin-left: 10px;
+  box-shadow: 
+    inset 0 -2px 3px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+/* Active state for buttons */
+.fallout-button-container.active .fallout-button {
+  color: #33ff33;
+}
+
+.fallout-button-container.active .indicator-light {
+  background: radial-gradient(
+    circle at center,
+    #33ff33 0%,
+    #00cc00 60%,
+    #009900 100%
+  );
+}
+
+/* Hover and active states */
+.fallout-button:hover {
+  color: #d4b85d;
+}
+
+.fallout-button:hover .indicator-light:not(.active) {
+  background: radial-gradient(
+    circle at center,
+    #ff6666 0%,
+    #dd0000 60%,
+    #aa0000 100%
+  );
+}
+
+.fallout-button:active .indicator-light:not(.active) {
+  background: radial-gradient(
+    circle at center,
+    #cc0000 0%,
+    #990000 60%,
+    #660000 100%
+  );
+  box-shadow: 
+    inset 0 2px 3px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Image display */
+.image-display {
+  height: 100%; /* Changed from fixed height */
+  overflow: hidden;
+}
+
+.image-display .screen {
+  height: 100%;
+  padding: 0;
+}
+
+/* Header glow effect */
+.header-glow {
+  text-shadow: 
+    0 0 10px var(--terminal-green),
+    0 0 20px var(--terminal-green),
+    0 0 30px var(--terminal-green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 
+      0 0 10px var(--terminal-green),
+      0 0 20px var(--terminal-green);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px var(--terminal-green),
+      0 0 30px var(--terminal-green),
+      0 0 40px var(--terminal-green);
+  }
+  100% {
+    text-shadow: 
+      0 0 10px var(--terminal-green),
+      0 0 20px var(--terminal-green);
+  }
+}
+
+/* Social icons */
+.social-icon {
+  color: var(--terminal-green);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #45ff45;
+  transform: scale(1.1);
+}
+
+/* Decorative panels */
+.decorative-panel {
+  height: 60px;
+}
+

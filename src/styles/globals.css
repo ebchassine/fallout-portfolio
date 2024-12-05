@@ -13,6 +13,8 @@ body {
   background-color: #1a1a1a;
   font-family: 'VT323', monospace;
   color: var(--terminal-green);
+  overflow: hidden; /* Disables Scroll to make it look like a static terminal*/
+  cursor: ('/images/cursor.png'), auto;
 }
 
 .metal-panel {
@@ -49,17 +51,10 @@ body {
   color: var(--terminal-green);
   text-shadow: 0 0 5px var(--terminal-green);
   position: relative;
-  overflow: visible; 
-  height: 600px; 
+  overflow: visible;
+  height: 600px;
   display: flex;
   flex-direction: column;
-}
-
-.screen-content {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding-right: 10px; /*  padding for the scrollbar */
-  height: calc(100% - 40px); /* Update 2 */
 }
 
 .screen::before {
@@ -69,16 +64,53 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-image: ('/images/screen-overlay.png'); */
-  /* background-size: cover; */
-  opacity: 0.1;
+  background: 
+    linear-gradient(
+      to bottom,
+      rgba(51, 255, 51, 0.1) 50%,
+      rgba(51, 255, 51, 0.05) 50%
+    );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 150%
+  );
   pointer-events: none;
 }
 
+.screen-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  height: calc(100% - 40px);
+}
 
-@keyframes scanline {
-  0% { transform: translateY(-100%); } /* Update 3 */
-  100% { transform: translateY(100%); } /* Update 3 */
+/* Styling for Typewriter text (WIP) */
+.typewriter-text {
+  border-right: 0.15em solid var(--terminal-green);
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--terminal-green) }
 }
 
 /* Custom scrollbar styles */
@@ -101,18 +133,63 @@ body {
   background: #45ff45;
 }
 
-.typewriter-text {
-  border-right: 0.15em solid var(--terminal-green);
-  animation: blink-caret 0.75s step-end infinite;
-}
-
 .hover-word {
   cursor: pointer;
   transition: background-color 0.3s none;
 }
 
 .hover-word:hover {
-  background-color: inherit; /* Highlight color */
-  
+  background-color: inherit;
   color: white;
 }
+
+/* Add styles for decorative divs */
+.decorative-panel {
+  height: 60px;
+  background: linear-gradient(145deg, var(--metal-light), var(--metal-dark));
+  border: 2px solid #555;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 0 10px rgba(0,0,0,0.5),
+    0 0 5px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.decorative-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: ('/images/metal-texture.jpg');
+  background-size: cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.decorative-panel.dots::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, var(--terminal-green) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.2;
+}
+
+.decorative-panel.lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, var(--terminal-green) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.2;
+}
+

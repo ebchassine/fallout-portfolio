@@ -29,36 +29,45 @@ export default function App() {
         </MetalPanel>
         
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="w-full md:w-[70%]">
+          <div className="w-full md:w-[70%] flex flex-col">
             <MainScreen 
               activeSection={activeSection} 
               setActiveSectionAndImage={setActiveSectionAndImage}
             />
           </div>
-          <div className="w-full md:w-[30%] flex flex-col justify-start gap-4">
-            <FalloutButton
-              onClick={() => setActiveSectionAndImage('about')}
-              isActive={activeSection === 'about'}
-            >
-              ABOUT
-            </FalloutButton>
-            <FalloutButton
-              onClick={() => setActiveSectionAndImage('projects')}
-              isActive={activeSection === 'projects'}
-            >
-              PROJECTS
-            </FalloutButton>
-            <FalloutButton
-              onClick={() => setActiveSectionAndImage('extra')}
-              isActive={activeSection === 'extra'}
-            >
-              EXTRA
-            </FalloutButton>
-            <ImageDisplay imageSrc={currentImage} alt="Project Image" />
-            <Socials />
-            {/* <div className={`decorative-panel ${pattern}`}></div> */}
+          <div className="w-full md:w-[30%] flex flex-col justify-between gap-4">
+            <div className="flex flex-col gap-4">
+              <FalloutButton
+                onClick={() => setActiveSectionAndImage('about')}
+                isActive={activeSection === 'about'}
+              >
+                ABOUT
+              </FalloutButton>
+              <FalloutButton
+                onClick={() => setActiveSectionAndImage('projects')}
+                isActive={activeSection === 'projects'}
+              >
+                PROJECTS
+              </FalloutButton>
+              <FalloutButton
+                onClick={() => setActiveSectionAndImage('extra')}
+                isActive={activeSection === 'extra'}
+              >
+                EXTRA
+              </FalloutButton>
+            </div>
+            <ImageDisplay imageSrc={currentImage} alt="Project Image" className="flex-grow" />
+          </div>
+        </div>
+        <div className="flex mt-6 gap-6">
+          <div className="w-[46.67%]">
             <DecorativePanel pattern="dots" />
-            {/* <DecorativePanel pattern="vents" /> */}
+          </div>
+          <div className="w-[23.33%]">
+            <DecorativePanel pattern="lines" />
+          </div>
+          <div className="w-[30%]">
+            <Socials />
           </div>
         </div>
       </div>

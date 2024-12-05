@@ -13,6 +13,24 @@ const projects = [
     tech: "Next.js, TailwindCSS, Firebase",
     image: "/images/pip-boy-3000.jpg"
   },
+  {
+    title: "Pip-Boy 3000",
+    description: "Mobile-first task management application",
+    tech: "Next.js, TailwindCSS, Firebase",
+    image: "/images/pip-boy-3000.jpg"
+  },
+  {
+    title: "Pip-Boy 3000",
+    description: "Mobile-first task management application",
+    tech: "Next.js, TailwindCSS, Firebase",
+    image: "/images/pip-boy-3000.jpg"
+  },
+  {
+    title: "Pip-Boy 3000",
+    description: "Mobile-first task management application",
+    tech: "Next.js, TailwindCSS, Firebase",
+    image: "/images/pip-boy-3000.jpg"
+  }
   // Add more projects as needed
 ];
 

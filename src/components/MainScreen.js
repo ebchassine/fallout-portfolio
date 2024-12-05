@@ -31,7 +31,7 @@ export function MainScreen({ activeSection, setActiveSectionAndImage }) {
   return (
     <div className="fallout-panel">
       <div className="screen">
-        <div className={`screen-content ${isLoading ? 'glitch-fade-in' : ''}`}>
+        <div className={`screen-content `}>
           {content}
         </div>
       </div>
