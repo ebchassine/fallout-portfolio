@@ -1,5 +1,5 @@
 import React from 'react';
-import TextHover from './TextHover';
+import TextHover from '../components/TextHover';
 
 const aboutImages = [
   { src: '/images/project1.jpg', alt: 'Vault entrance' },

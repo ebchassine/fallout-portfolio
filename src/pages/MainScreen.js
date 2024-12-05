@@ -2,7 +2,7 @@ import React from 'react';
 import { About } from './About';
 import { Projects } from './Projects';
 import { Extra } from './Extra';
-import TextHover  from './TextHover';
+import TextHover  from '../components/TextHover';
 
 export function MainScreen({ activeSection, setActiveSectionAndImage }) {
   const renderContent = () => {

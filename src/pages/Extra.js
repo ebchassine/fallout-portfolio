@@ -1,5 +1,5 @@
 import React from 'react';
-import TextHover from './TextHover';
+import TextHover from '../components/TextHover';
 
 const extraImages = [
   { src: '/images/terminal.jpg', alt: 'Retro terminal' },
